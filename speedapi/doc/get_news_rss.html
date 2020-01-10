@@ -1,0 +1,244 @@
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Speed API</title>
+	<link rel="stylesheet" type="text/css" href="/speedapi/doc/css/api-style.css">
+</head>
+<body>
+
+<div id="detailsBody">
+
+	<h1 id="top">Get News RSS</h1>
+	<h2>Description</h2>
+	<p>Retrieve an RSS 2.0 feed for the NFSW News.</p>
+	<h3>URI</h3>
+	<p>/ws/cmsbridge/news/rss/&lt;locale&gt;</p>
+
+	<div class="tableheader">
+		<a href="#URIParameters">URI Parameters</a>
+		&nbsp;|&nbsp;<a href="#InputParameters">Input Parameters</a>
+		&nbsp;|&nbsp;<a href="#Examples">Examples</a>
+	</div>
+
+	<table cellspacing="0">
+		<tbody>
+			<tr>
+				<td colspan="5">
+					<h2 class="TableTitle">URI Parameters</h2>
+				</td>
+			</tr>
+			<tr>
+				<th>Field</th>
+				<th>Type</th>
+				<th>Required?</th>
+				<th>Example</th>
+				<th width="100%">Description</th>
+			</tr>			
+			<tr class="odd">
+				<td>
+					<strong>locale</strong>
+				</td>
+				<td>
+					string
+				</td>
+				<td>
+					<strong class="required">Required</strong>
+				</td>
+				<td>
+					<p>en_US</p>
+				</td>
+				<td>
+					<p>The locale to retrieve the news for. e.g. en_US or de_DE.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+	
+	<a id="InputParameters"></a>
+	<div>
+		<table cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="5">
+						<h2 class="TableTitle">Input Parameters</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>Field</th>
+					<th>Type</th>
+					<th>Required?</th>
+					<th>Example</th>
+					<th width="100%">Description</th>
+				</tr>
+				<tr class="odd">
+					<td>
+						<strong>firstResult</strong>
+					</td>
+					<td>
+						<p>Integer</p>
+					</td>
+					<td>
+						<strong class="optional">Optional</strong>
+					</td>
+					<td>
+						<p>0</p>
+					</td>
+					<td>
+						<p>The first result to retrieve (used for pagination).</p>
+					</td>
+				</tr>	
+				<tr>
+					<td>
+						<strong>maxResults</strong>
+					</td>
+					<td>
+						<p>Integer</p>
+					</td>
+					<td>
+						<strong class="optional">Optional</strong>
+					</td>
+					<td>
+						<p>10</p>
+					</td>
+					<td>
+						<p>The total number of results to retrieve.</p>
+					</td>
+				</tr>					
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="Examples"></a>
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td colspan="4">
+						<h2 class="TableTitle">Examples</h2>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td>
+						<b>Request</b>
+					</td>
+					<td>
+						<table cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td>
+										uri
+									</td>
+									<td>
+										<p>/ws/cmsbridge/news/rss/en_US?firstResult=0&maxResults;=2</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td><b>Response</b></td><td>
+						<table cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td>
+										status code
+									</td>
+									<td>
+										<p>200</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										condition
+									</td>
+									<td>
+										<p>Success</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										payload
+									</td>
+									<td width="100%">
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" version="2.0"&gt;
+  &lt;channel&gt;
+    &lt;title&gt;Need for Speed World News&lt;/title&gt;
+    &lt;link&gt;http://world.needforspeed.com/news&lt;/link&gt;
+    &lt;description&gt;Need for Speed World News&lt;/description&gt;
+    &lt;category&gt;Games&lt;/category&gt;
+    &lt;dc:subject&gt;Games&lt;/dc:subject&gt;
+
+    &lt;item&gt;
+      &lt;title&gt;Performance Customization Competition Now Closed&lt;/title&gt;
+      &lt;link&gt;http://world.needforspeed.com/news#18925&lt;/link&gt;
+      &lt;description&gt;&lt;p&gt;The Need for Speed World &lt;a href="http://world.needforspeed.com/news#18108" target="_self"&gt;Performance Customization Competition&lt;/a&gt; is now closed.&amp;nbsp; We've received over 550 entries for the contest so we're going to take a few days to review all the entries and will be posting the winners later this week.&lt;br&gt;&lt;br&gt;Remember that there will be three winners in this competition:&lt;br&gt;&lt;br&gt;1. The player with the highest rated tier 1 car&lt;br&gt;2. The player with the highest rated tier 2 car&lt;br&gt;3. The player with the highest rated tier 3 car &lt;br&gt;&lt;br&gt;Each winner will receive a Need for Speed swag bundle as their prize.&lt;br&gt;&lt;br&gt;Keep checking the &lt;a href="http://World.NeedforSpeed.com" target="_self"&gt;NFS World website&lt;/a&gt; for the latest news and competitions because we've got a lot coming this December!&lt;/p&gt;&lt;/description&gt;
+
+      &lt;category&gt;Community&lt;/category&gt;
+      &lt;category&gt;Swag&lt;/category&gt;
+      &lt;category&gt;NFSWorld&lt;/category&gt;
+      &lt;category&gt;nfs-world&lt;/category&gt;
+      &lt;category&gt;community&lt;/category&gt;
+      &lt;category&gt;Events&lt;/category&gt;
+
+      &lt;category&gt;NFS World&lt;/category&gt;
+      &lt;category&gt;Need for Speed World&lt;/category&gt;
+      &lt;category&gt;event&lt;/category&gt;
+      &lt;category&gt;Prizes&lt;/category&gt;
+      &lt;category&gt;Contest&lt;/category&gt;
+      &lt;category&gt;Competition&lt;/category&gt;
+
+      &lt;category&gt;Performance Customization&lt;/category&gt;
+      &lt;pubDate&gt;Mon, 06 Dec 2010 16:51:49 GMT&lt;/pubDate&gt;
+      &lt;guid&gt;http://world.needforspeed.com/news#18925&lt;/guid&gt;
+      &lt;dc:creator&gt;NFSDrew&lt;/dc:creator&gt;
+      &lt;dc:date&gt;2010-12-06T16:51:49Z&lt;/dc:date&gt;
+    &lt;/item&gt;
+
+    &lt;item&gt;
+      &lt;title&gt;Curse.com&amp;#039;s Exclusive Interview with NFS World Producer&lt;/title&gt;
+      &lt;link&gt;http://world.needforspeed.com/news#18865&lt;/link&gt;
+      &lt;description&gt;&lt;p&gt;A couple days ago Need for Speed World Producer Melvin Teo took some time to do an interview with the good folks over at &lt;a href="http://www.curse.com" target="_blank"&gt;Curse.com&lt;/a&gt;.&lt;br&gt;&lt;br&gt;In the interview Melvin talks about the new features in Version 5 of NFS World, the Performance Customization system and the future of NFS World &amp;amp; Performance Customization.&lt;br&gt;&lt;br&gt;If you want to check it out, &lt;a href="http://www.curse.com/articles/other-en-news/884314.aspx" target="_blank"&gt;click here&lt;/a&gt;.&lt;/p&gt;&lt;/description&gt;
+
+      &lt;category&gt;Need for Speed World&lt;/category&gt;
+      &lt;category&gt;interview&lt;/category&gt;
+      &lt;category&gt;Curse.com&lt;/category&gt;
+      &lt;category&gt;nfs-world&lt;/category&gt;
+      &lt;category&gt;NFSWorld&lt;/category&gt;
+      &lt;category&gt;Producer&lt;/category&gt;
+
+      &lt;category&gt;NFS World&lt;/category&gt;
+      &lt;category&gt;News&lt;/category&gt;
+      &lt;category&gt;Melvin Teo&lt;/category&gt;
+      &lt;category&gt;Performance Customization&lt;/category&gt;
+      &lt;pubDate&gt;Fri, 03 Dec 2010 22:15:39 GMT&lt;/pubDate&gt;
+      &lt;guid&gt;http://world.needforspeed.com/news#18865&lt;/guid&gt;
+
+      &lt;dc:creator&gt;NFSDrew&lt;/dc:creator&gt;
+      &lt;dc:date&gt;2010-12-03T22:15:39Z&lt;/dc:date&gt;
+    &lt;/item&gt;
+  &lt;/channel&gt;
+&lt;/rss&gt;
+</pre>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Speed API</title>
+	<link rel="stylesheet" type="text/css" href="/speedapi/doc/css/api-style.css">
+</head>
+<body>
+
+<div id="detailsBody">
+
+	<h1 id="top">Get News RSS for Tag</h1>
+	<h2>Description</h2>
+	<p>Retrieve an RSS 2.0 feed for the NFSW News filtered by a given Tag</p>
+	<h3>URI</h3>
+	<p>/ws/cmsbridge/news/rss/&lt;locale&gt;/tag&lt;tag&gt;</p>
+
+	<div class="tableheader">
+		<a href="#URIParameters">URI Parameters</a>
+		&nbsp;|&nbsp;<a href="#InputParameters">Input Parameters</a>
+		&nbsp;|&nbsp;<a href="#Examples">Examples</a>
+	</div>
+
+	<table cellspacing="0">
+		<tbody>
+			<tr>
+				<td colspan="5">
+					<h2 class="TableTitle">URI Parameters</h2>
+				</td>
+			</tr>
+			<tr>
+				<th>Field</th>
+				<th>Type</th>
+				<th>Required?</th>
+				<th>Example</th>
+				<th width="100%">Description</th>
+			</tr>			
+			<tr class="odd">
+				<td>
+					<strong>locale</strong>
+				</td>
+				<td>
+					string
+				</td>
+				<td>
+					<strong class="required">Required</strong>
+				</td>
+				<td>
+					<p>en_US</p>
+				</td>
+				<td>
+					<p>The locale to retrieve the news for. e.g. en_US or de_DE.</p>
+				</td>
+			</tr>			
+			<tr>
+				<td>
+					<strong>tag</strong>
+				</td>
+				<td>
+					string
+				</td>
+				<td>
+					<strong class="required">Required</strong>
+				</td>
+				<td>
+					<p>Competition</p>
+				</td>
+				<td>
+					<p>The tag to filter the news by. e.g. Competition</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+	
+	<a id="InputParameters"></a>
+	<div>
+		<table cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="5">
+						<h2 class="TableTitle">Input Parameters</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>Field</th>
+					<th>Type</th>
+					<th>Required?</th>
+					<th>Example</th>
+					<th width="100%">Description</th>
+				</tr>
+				<tr class="odd">
+					<td>
+						<strong>firstResult</strong>
+					</td>
+					<td>
+						<p>Integer</p>
+					</td>
+					<td>
+						<strong class="optional">Optional</strong>
+					</td>
+					<td>
+						<p>0</p>
+					</td>
+					<td>
+						<p>The first result to retrieve (used for pagination).</p>
+					</td>
+				</tr>	
+				<tr>
+					<td>
+						<strong>maxResults</strong>
+					</td>
+					<td>
+						<p>Integer</p>
+					</td>
+					<td>
+						<strong class="optional">Optional</strong>
+					</td>
+					<td>
+						<p>10</p>
+					</td>
+					<td>
+						<p>The total number of results to retrieve.</p>
+					</td>
+				</tr>					
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="Examples"></a>
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td colspan="4">
+						<h2 class="TableTitle">Examples</h2>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td>
+						<b>Request</b>
+					</td>
+					<td>
+						<table cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td>
+										uri
+									</td>
+									<td>
+										<p>/ws/cmsbridge/news/rss/en_US/tag/Competition?firstResult=0&maxResults;=2</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td><b>Response</b></td><td>
+						<table cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td>
+										status code
+									</td>
+									<td>
+										<p>200</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										condition
+									</td>
+									<td>
+										<p>Success</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										payload
+									</td>
+									<td width="100%">
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" version="2.0"&gt;
+  &lt;channel&gt;
+    &lt;title&gt;Need for Speed World News&lt;/title&gt;
+    &lt;link&gt;http://world.needforspeed.com/news&lt;/link&gt;
+    &lt;description&gt;Need for Speed World News&lt;/description&gt;
+    &lt;category&gt;Games&lt;/category&gt;
+    &lt;dc:subject&gt;Games&lt;/dc:subject&gt;
+
+    &lt;item&gt;
+      &lt;title&gt;1 Million Challenge Car Showcase&lt;/title&gt;
+      &lt;link&gt;http://world.needforspeed.com/news#18928&lt;/link&gt;
+      &lt;description&gt;&lt;p&gt;&lt;object width="730" height="429" data="http://www.youtube.com/v/dwHiTDkoJ_Q?fs=1&amp;amp;hl=en_US&amp;amp;hd=1" type="application/x-shockwave-flash"&gt;&lt;param name="data" value="http://www.youtube.com/v/dwHiTDkoJ_Q?fs=1&amp;amp;hl=en_US&amp;amp;hd=1"&gt;&lt;param name="allowFullScreen" value="true"&gt;&lt;param name="allowscriptaccess" value="always"&gt;&lt;param name="allowfullscreen" value="true"&gt;&lt;param name="src" value="http://www.youtube.com/v/dwHiTDkoJ_Q?fs=1&amp;amp;hl=en_US&amp;amp;hd=1"&gt;&lt;/object&gt;&lt;/p&gt;&lt;p&gt;Sweet, huh? We thought you guys might like to see what the&lt;span style="font-size: 13.2px;"&gt;&lt;strong&gt;&amp;nbsp;&lt;/strong&gt;Bentley Continental Supersports Convertible, the Lamborghini Murciélago LP 650-4 Roadster and the Dodge Viper SRT10 Convertible Final Edition looked like in action!&amp;nbsp;Those are some beautiful cars. The good news is, they're almost yours!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size: 13.2px;"&gt;The Need for Speed Hot Pursuit Launch Trailer has crossed 500,000 views! That means we're over halfway to unlocking these three sexy cars absolutely FREE!&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;A couple of tips: if you haven't posted the video to your Facebook wall yet, then give that a shot. Chances are your Facebook friends will take a look. Also, make sure to "Like" and comment on the video, cause it will push it up the Youtube rankings and get a broader range of gamers and car nuts to take a look. Plus, the more likes and comments we get the higher the chance at making it on to some "honor lists" on YouTube giving the video more exposure!&lt;/p&gt;&lt;p&gt;And, of course, feel free to direct people to this blog post!&lt;/p&gt; &lt;p&gt;&lt;object width="730" height="429" data="http://www.youtube.com/v/82et_z_gTlg?fs=1&amp;amp;hl=en_US&amp;amp;hd=1" type="application/x-shockwave-flash"&gt;&lt;param name="data" value="http://www.youtube.com/v/82et_z_gTlg?fs=1&amp;amp;hl=en_US&amp;amp;hd=1"&gt;&lt;param name="allowFullScreen" value="true"&gt;&lt;param name="allowscriptaccess" value="always"&gt;&lt;param name="wmode" value="transparent"&gt;&lt;param name="src" value="http://www.youtube.com/v/82et_z_gTlg?fs=1&amp;amp;hl=en_US&amp;amp;hd=1"&gt;&lt;param name="allowfullscreen" value="true"&gt;&lt;/object&gt;&lt;/p&gt;&lt;/description&gt;
+
+      &lt;category&gt;Community&lt;/category&gt;
+      &lt;category&gt;NFS Hot Pursuit&lt;/category&gt;
+      &lt;category&gt;Promotions&lt;/category&gt;
+      &lt;category&gt;NFS&lt;/category&gt;
+      &lt;category&gt;NFSHP&lt;/category&gt;
+      &lt;category&gt;News&lt;/category&gt;
+
+      &lt;category&gt;YouTube&lt;/category&gt;
+      &lt;category&gt;cars&lt;/category&gt;
+      &lt;category&gt;Hot Pursuit&lt;/category&gt;
+      &lt;category&gt;Need for Speed&lt;/category&gt;
+      &lt;category&gt;Contest&lt;/category&gt;
+      &lt;category&gt;nfs-hot-pursuit&lt;/category&gt;
+
+      &lt;category&gt;Competition&lt;/category&gt;
+      &lt;pubDate&gt;Mon, 06 Dec 2010 20:31:26 GMT&lt;/pubDate&gt;
+      &lt;guid&gt;http://world.needforspeed.com/news#18928&lt;/guid&gt;
+      &lt;dc:creator&gt;NFSSascha&lt;/dc:creator&gt;
+      &lt;dc:date&gt;2010-12-06T20:31:26Z&lt;/dc:date&gt;
+    &lt;/item&gt;
+
+    &lt;item&gt;
+      &lt;title&gt;Performance Customization Competition Now Closed&lt;/title&gt;
+      &lt;link&gt;http://world.needforspeed.com/news#18925&lt;/link&gt;
+      &lt;description&gt;&lt;p&gt;The Need for Speed World &lt;a href="http://world.needforspeed.com/news#18108" target="_self"&gt;Performance Customization Competition&lt;/a&gt; is now closed.&amp;nbsp; We've received over 550 entries for the contest so we're going to take a few days to review all the entries and will be posting the winners later this week.&lt;br&gt;&lt;br&gt;Remember that there will be three winners in this competition:&lt;br&gt;&lt;br&gt;1. The player with the highest rated tier 1 car&lt;br&gt;2. The player with the highest rated tier 2 car&lt;br&gt;3. The player with the highest rated tier 3 car &lt;br&gt;&lt;br&gt;Each winner will receive a Need for Speed swag bundle as their prize.&lt;br&gt;&lt;br&gt;Keep checking the &lt;a href="http://World.NeedforSpeed.com" target="_self"&gt;NFS World website&lt;/a&gt; for the latest news and competitions because we've got a lot coming this December!&lt;/p&gt;&lt;/description&gt;
+
+      &lt;category&gt;Community&lt;/category&gt;
+      &lt;category&gt;Swag&lt;/category&gt;
+      &lt;category&gt;NFSWorld&lt;/category&gt;
+      &lt;category&gt;nfs-world&lt;/category&gt;
+      &lt;category&gt;community&lt;/category&gt;
+      &lt;category&gt;Events&lt;/category&gt;
+
+      &lt;category&gt;NFS World&lt;/category&gt;
+      &lt;category&gt;Need for Speed World&lt;/category&gt;
+      &lt;category&gt;event&lt;/category&gt;
+      &lt;category&gt;Prizes&lt;/category&gt;
+      &lt;category&gt;Contest&lt;/category&gt;
+      &lt;category&gt;Competition&lt;/category&gt;
+
+      &lt;category&gt;Performance Customization&lt;/category&gt;
+      &lt;pubDate&gt;Mon, 06 Dec 2010 16:51:49 GMT&lt;/pubDate&gt;
+      &lt;guid&gt;http://world.needforspeed.com/news#18925&lt;/guid&gt;
+      &lt;dc:creator&gt;NFSDrew&lt;/dc:creator&gt;
+      &lt;dc:date&gt;2010-12-06T16:51:49Z&lt;/dc:date&gt;
+    &lt;/item&gt;
+
+  &lt;/channel&gt;
+&lt;/rss&gt;
+</pre>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+</div>
+</body>
+</html>

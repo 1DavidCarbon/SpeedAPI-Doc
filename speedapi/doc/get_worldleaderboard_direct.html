@@ -1,0 +1,475 @@
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Speed API</title>
+	<link rel="stylesheet" type="text/css" href="/speedapi/doc/css/api-style.css">
+</head>
+<body>
+
+<div id="detailsBody">
+
+	<h1 id="top">Get Leaderboard</h1>
+	<h2>Description</h2>
+	<p>Retrieve the leaderboards.</p>
+	<p><i>ATT:</i> although technically this is a get, this endpoint is implemented as a http POST call.<br/>
+	The reason for this is the 2k limitation on http GET calls, which is not sufficient when querying with a long list of driver names.</p>
+	<h3>URI</h3>
+	<p>POST /ws/game/nfsw/leaderboards</p>
+
+	<div class="tableheader">
+		<a href="#URIParameters">URI Parameters</a>
+		&nbsp;|&nbsp;<a href="#InputParameters">Input Parameters</a>
+		&nbsp;|&nbsp;<a href="#Output">Output</a>
+		&nbsp;|&nbsp;<a href="#Examples">Examples</a>
+		&nbsp;|&nbsp;<a href="#ErrorCodes">Error Codes</a>
+	</div>
+
+	<table cellspacing="0">
+		<tbody>
+			<tr>
+				<td colspan="5">
+					<h2 class="TableTitle">URI Parameters</h2>
+				</td>
+			</tr>
+			<tr>
+				<th>Field</th>
+				<th>Type</th>
+				<th>Required?</th>
+				<th>Format</th>
+				<th width="100%">Description</th>
+			</tr>			
+			<tr class="odd">
+				<td>
+					<strong>gameName</strong>
+				</td>
+				<td>
+					string
+				</td>
+				<td>
+					<strong class="required">Required</strong>
+				</td>
+				<td>
+					<p>&nbsp;</p>
+				</td>
+				<td>
+					<p>Game name.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="InputParameters"></a>
+	<div>
+		<table cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="5">
+						<h2 class="TableTitle">Input Parameters</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>Field</th><th>Type</th>
+					<th>Required?</th>
+					<th>Format</th>
+					<th width="100%">Description</th>
+				</tr>
+				<tr class="odd">
+					<td>
+						<strong>output</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<strong class="optional">Optional</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<p>Format of response, either json or xml. The default format is xml.</p>
+					</td>
+				</tr>				
+				<tr>
+					<td>
+						<strong>eid</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<strong class="required">Required</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<p>Event Id.</p>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td>
+						<strong>et</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<strong class="required">Required</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<p>Type of the event. Valid Event Types are: PVP = 1, PVE = 2.</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>lt</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<strong class="required">Required</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<p>Type of the leaderboard. Valid Leaderboard Types are: Overall = 1, Daily = 2, Weekly = 3, Monthly = 4.</p>
+					</td>
+				</tr>
+				<!--
+				<tr>
+					<td>
+						<strong>userIds</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<strong class="optional">Optional</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<p>Nucleus user Ids.</p>
+					</td>
+				</tr>
+				 -->
+				<tr class="odd">
+					<td>
+						<strong>dn</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<strong class="required">Required</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<p>A comma-seperated list of driver names to fetch the leaderboard for.</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>rf</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<strong class="optional">Optional</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<p>The record filter. It's used with Daily, Weekly and Monthly leaderboard. Daily leaderboards (0-6): Days past from current day, while 0 means current day and 6 means 6 days before. Weekly leaderboards: A valid week number using standard US English culture rules (the first day of the week of a given year is Sunday). Monthly leaderboards (1-12): A valid month number.</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>shard</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<strong class="optional">Optional</strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<p>Retrieve information from a specific shard. The default is the configured default shard in server configuration.  An example would be "Apex".</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="Output"></a>
+	<div>
+		<table cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="3">
+						<h2 class="TableTitle">Output</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>Field</th>
+					<th>Type</th>
+					<th width="100%">Detail</th>
+				</tr>
+				<tr class="odd">
+					<td>
+						<strong><a href="model/worldleaderboard.html">WorldLeaderboard</a></strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<p>A list of WorldLeaderboard objects. <!-- The first 5 records have detailed persona info. --></p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="Examples"></a>
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td colspan="4">
+						<h2 class="TableTitle">Examples</h2>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td>
+						<b>Request</b>
+					</td>
+					<td>
+						<table cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td>
+										uri
+									</td>
+									<td>
+										<p>POST /ws/game/nfsw/leaderboards?et=2&amp;eid=45&amp;lt=1&amp;dn=DATA0001F,DATA0002F,DATA0003F&shard;=Apex</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td><b>Response</b></td><td>
+						<table cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td>
+										status code
+									</td>
+									<td>
+										<p>200</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										condition
+									</td>
+									<td>
+										<p>Success</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										payload
+									</td>
+									<td width="100%">
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;list&gt;
+   &lt;worldLeaderboard eventId="45" eventType="2" eventMode="1" eventDurationMilliseconds="119520" eventDuration="0:01:59.520" personaName="DATA0001F" make="TOYOTA" carName="COROLLA GT-S (AE86)" rank="1"&gt;
+      &lt;persona personaName="DATA0003D" level="2" image="8" statusMessage="" defaultPersona="true"/&gt;
+   &lt;worldLeaderboard/&gt;   
+   &lt;worldLeaderboard eventId="45" eventType="2" eventMode="1" eventDurationMilliseconds="119534" eventDuration="0:01:59.534" personaName="DATA0002F" make="MAZDA" carName="MAZDASPEED 3" rank="2"/&gt;
+      &lt;persona personaName="DATA0002F" level="2" image="5" statusMessage="" defaultPersona="true"/&gt;
+   &lt;worldLeaderboard/&gt;   
+   &lt;worldLeaderboard eventId="45" eventType="2" eventMode="1" eventDurationMilliseconds="139755" eventDuration="0:02:19.755" personaName="DATA0003F" make="NISSAN" carName="240SX (S13)" rank="3"/&gt;
+      &lt;persona personaName="DATA0003F" level="2" image="3" statusMessage="" defaultPersona="true"/&gt;
+   &lt;worldLeaderboard/&gt;   
+&lt;/list&gt; 
+</pre>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="ErrorCodes"></a>
+	<div>
+		<table cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="4">
+						<h2 class="TableTitle">Error Codes</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>Status Code</th>
+					<th>Field</th>
+					<th width="40%">Description</th>
+					<th width="60%">Payload</th>
+				</tr>
+				<tr class="odd">
+					<td>
+						<p>409&nbsp;</p>
+					</td>
+					<td>
+						<p>Event Id</p>
+					</td>
+					<td>
+						Event Id is empty.
+					</td>
+					<td>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;webServiceErrorResponse statusCode="409"&gt;
+  &lt;errorCode&gt;EVENTID_IS_EMPTY&lt;/errorCode&gt;
+&lt;/webServiceErrorResponse&gt;</pre>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>409&nbsp;</p>
+					</td>
+					<td>
+						<p>Event Id</p>
+					</td>
+					<td>
+						Event Id is invalid.
+					</td>
+					<td>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;webServiceErrorResponse statusCode="409"&gt;
+  &lt;errorCode&gt;EVENTID_INVALID_VALUE&lt;/errorCode&gt;
+&lt;/webServiceErrorResponse&gt;</pre>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td>
+						<p>409&nbsp;</p>
+					</td>
+					<td>
+						<p>Event type</p>
+					</td>
+					<td>
+						Event type is empty.
+					</td>
+					<td>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;webServiceErrorResponse statusCode="409"&gt;
+  &lt;errorCode&gt;EVENTTYPE_IS_EMPTY&lt;/errorCode&gt;
+&lt;/webServiceErrorResponse&gt;</pre>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>409&nbsp;</p>
+					</td>
+					<td>
+						<p>Event type</p>
+					</td>
+					<td>
+						Event type is invalid.
+					</td>
+					<td>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;webServiceErrorResponse statusCode="409"&gt;
+  &lt;errorCode&gt;EVENTTYPE_INVALID_VALUE&lt;/errorCode&gt;
+&lt;/webServiceErrorResponse&gt;</pre>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td>
+						<p>409&nbsp;</p>
+					</td>
+					<td>
+						<p>Leaderboard type</p>
+					</td>
+					<td>
+						Leaderboard type is empty.
+					</td>
+					<td>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;webServiceErrorResponse statusCode="409"&gt;
+  &lt;errorCode&gt;LEADERBOARDTYPE_IS_EMPTY&lt;/errorCode&gt;
+&lt;/webServiceErrorResponse&gt;</pre>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>409&nbsp;</p>
+					</td>
+					<td>
+						<p>Leaderboard type</p>
+					</td>
+					<td>
+						Leaderboard type is invalid.
+					</td>
+					<td>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;webServiceErrorResponse statusCode="409"&gt;
+  &lt;errorCode&gt;LEADERBOARDTYPE_INVALID_VALUE&lt;/errorCode&gt;
+&lt;/webServiceErrorResponse&gt;</pre>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td>
+						<p>409&nbsp;</p>
+					</td>
+					<td>
+						<p>Driver names</p>
+					</td>
+					<td>
+						Driver names is empty.
+					</td>
+					<td>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;webServiceErrorResponse statusCode="409"&gt;
+  &lt;errorCode&gt;DRIVERNAMES_IS_EMPTY&lt;/errorCode&gt;
+&lt;/webServiceErrorResponse&gt;</pre>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+</div>
+</body>
+</html>

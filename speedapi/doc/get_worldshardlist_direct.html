@@ -1,0 +1,231 @@
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Speed API</title>
+	<link rel="stylesheet" type="text/css" href="/speedapi/doc/css/api-style.css">
+</head>
+<body>
+
+<div id="detailsBody">
+
+	<h1 id="top">Get Shard List</h1>
+	<h2>Description</h2>
+	<p>Retrieve shard list.</p>
+	<h3>URI</h3>	   
+	<p>/ws/game/nfsw/shard/list</p>
+
+	<div class="tableheader">
+		<a href="#URIParameters">URI Parameters</a>
+		&nbsp;|&nbsp;<a href="#InputParameters">Input Parameters</a>
+		&nbsp;|&nbsp;<a href="#Output">Output</a>
+		&nbsp;|&nbsp;<a href="#Examples">Examples</a>
+		&nbsp;|&nbsp;<a href="#ErrorCodes">Error Codes</a>
+	</div>
+
+	<table cellspacing="0">
+		<tbody>
+			<tr>
+				<td colspan="5">
+					<h2 class="TableTitle">URI Parameters</h2>
+				</td>
+			</tr>
+			<tr>
+				<th>Field</th>
+				<th>Type</th>
+				<th>Required?</th>
+				<th>Example</th>
+				<th width="100%">Description</th>
+			</tr>			
+			<tr class="odd">
+				<td>
+					<strong>gameName</strong>
+				</td>
+				<td>
+					string
+				</td>
+				<td>
+					<strong class="required">Required</strong>
+				</td>
+				<td>
+					<p>nfsw</p>
+				</td>
+				<td>
+					<p>Game name.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="InputParameters"></a>
+	<div>
+		<table cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="5">
+						<h2 class="TableTitle">Input Parameters</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>Field</th>
+					<th>Type</th>
+					<th>Required?</th>
+					<th>Example</th>
+					<th width="100%">Description</th>
+				</tr>
+				<tr class="odd">
+					<td>
+						<strong>output</strong>
+					</td>
+					<td>
+						<p>string</p>
+					</td>
+					<td>
+						<strong class="optional">Optional</strong>
+					</td>
+					<td>
+						<p>xml</p>
+					</td>
+					<td>
+						<p>Format of response, either json or xml. The default format is xml.</p>
+					</td>
+				</tr>	
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="Output"></a>
+	<div>
+		<table cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="3">
+						<h2 class="TableTitle">Output</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>Field</th>
+					<th>Type</th>
+					<th width="100%">Detail</th>
+				</tr>
+				<tr class="odd">
+					<td>
+						<strong><a href="model/worldshard.html">WorldShard</a></strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<p>A list of WorldShard object.</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="Examples"></a>
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td colspan="4">
+						<h2 class="TableTitle">Examples</h2>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td>
+						<b>Request</b>
+					</td>
+					<td>
+						<table cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td>
+										uri
+									</td>
+									<td>
+										<p>/ws/game/nfsw/shard/list</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td><b>Response</b></td><td>
+						<table cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td>
+										status code
+									</td>
+									<td>
+										<p>200</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										condition
+									</td>
+									<td>
+										<p>Success</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										payload
+									</td>
+									<td width="100%">
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;list&gt;
+  &lt;worldShard&gt;
+    &lt;shardName&gt;Apex&lt;/shardName&gt;
+  &lt;/worldShard&gt;
+  &lt;worldShard&gt;
+    &lt;shardName&gt;Chicane&lt;/shardName&gt;
+  &lt;/worldShard&gt;
+&lt;/list&gt;
+</pre>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="ErrorCodes"></a>
+	<div>
+		<table cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="4">
+						<h2 class="TableTitle">Error Codes</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>Status Code</th>
+					<th>Field</th>
+					<th width="40%">Description</th>
+					<th width="60%">Payload</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+</div>
+</body>
+</html>

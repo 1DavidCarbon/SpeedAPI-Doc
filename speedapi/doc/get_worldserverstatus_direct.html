@@ -1,0 +1,263 @@
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Speed API</title>
+	<link rel="stylesheet" type="text/css" href="/speedapi/doc/css/api-style.css">
+</head>
+<body>
+
+<div id="detailsBody">
+
+	<h1 id="top">Get Server Status</h1>
+	<h2>Description</h2>
+	<p>Retrieve game server status.</p>
+	<h3>URI</h3>
+	<p>/ws/game/nfsw/server/status</p>
+
+	<div class="tableheader">
+		<a href="#URIParameters">URI Parameters</a>
+		&nbsp;|&nbsp;<a href="#InputParameters">Input Parameters</a>
+		&nbsp;|&nbsp;<a href="#Output">Output</a>
+		&nbsp;|&nbsp;<a href="#Examples">Examples</a>
+		&nbsp;|&nbsp;<a href="#ErrorCodes">Error Codes</a>
+	</div>
+
+	<table cellspacing="0">
+		<tbody>
+			<tr>
+				<td colspan="5">
+					<h2 class="TableTitle">URI Parameters</h2>
+				</td>
+			</tr>
+			<tr>
+				<th>Field</th>
+				<th>Type</th>
+				<th>Required?</th>
+				<th>Example</th>
+				<th width="100%">Description</th>
+			</tr>			
+			<tr class="odd">
+				<td>
+					<strong>gameName</strong>
+				</td>
+				<td>
+					string
+				</td>
+				<td>
+					<strong class="required">Required</strong>
+				</td>
+				<td>
+					<p>nfsw</p>
+				</td>
+				<td>
+					<p>Game name.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="InputParameters"></a>
+	<div>
+		<table cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="5">
+						<h2 class="TableTitle">Input Parameters</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>Field</th>
+					<th>Type</th>
+					<th>Required?</th>
+					<th>Example</th>
+					<th width="100%">Description</th>
+				</tr>
+				<tr class="odd">
+					<td>
+						<strong>output</strong>
+					</td>
+					<td>
+						<p>string</p>
+					</td>
+					<td>
+						<strong class="optional">Optional</strong>
+					</td>
+					<td>
+						<p>xml</p>
+					</td>
+					<td>
+						<p>Format of response, either json or xml. The default format is xml.</p>
+					</td>
+				</tr>	
+				<tr>
+					<td>
+						<strong>locale</strong>
+					</td>
+					<td>
+						<p>string</p>
+					</td>
+					<td>
+						<strong class="optional">Optional</strong>
+					</td>
+					<td>
+						<p>en_US</p>
+					</td>
+					<td>
+						<p>The locale for the localized status message.</p>
+					</td>
+				</tr>	
+				<tr class="odd">
+					<td>
+						<strong>shard</strong>
+					</td>
+					<td>
+						<p>string</p>
+					</td>
+					<td>
+						<strong class="optional">Optional</strong>
+					</td>
+					<td>
+						<p>Apex</p>
+					</td>
+					<td>
+						<p>Retrieve information from a specific shard. The default is the configured default shard in server configuration.</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="Output"></a>
+	<div>
+		<table cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="3">
+						<h2 class="TableTitle">Output</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>Field</th>
+					<th>Type</th>
+					<th width="100%">Detail</th>
+				</tr>
+				<tr class="odd">
+					<td>
+						<strong><a href="model/worldserverstatus.html">WorldServerStatus</a></strong>
+					</td>
+					<td>
+						<p>&nbsp;</p>
+					</td>
+					<td>
+						<p>WorldServerStatus object.</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="Examples"></a>
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td colspan="4">
+						<h2 class="TableTitle">Examples</h2>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td>
+						<b>Request</b>
+					</td>
+					<td>
+						<table cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td>
+										uri
+									</td>
+									<td>
+										<p>/ws/game/nfsw/server/status?locale=en_US&shard;=Apex</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr class="odd">
+					<td><b>Response</b></td><td>
+						<table cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td>
+										status code
+									</td>
+									<td>
+										<p>200</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										condition
+									</td>
+									<td>
+										<p>Success</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										payload
+									</td>
+									<td width="100%">
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;worldServerStatus lastChangedDate="2010-12-01 06:32:45.0 GMT-00:00"&gt;
+  &lt;status&gt;UP&lt;/status&gt;
+  &lt;message&gt;ALL_SYSTEMS_GO&lt;/message&gt;
+  &lt;localizedMessage&gt;The servers are currently up and running.&lt;/localizedMessage&gt;
+  &lt;shard&gt;Apex&lt;/shard&gt;
+&lt;/worldServerStatus&gt;
+</pre>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+	<a id="ErrorCodes"></a>
+	<div>
+		<table cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="4">
+						<h2 class="TableTitle">Error Codes</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>Status Code</th>
+					<th>Field</th>
+					<th width="40%">Description</th>
+					<th width="60%">Payload</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="breadcrumb">         [ <a href="#top">back to top</a> ]       </div>
+
+</div>
+</body>
+</html>
